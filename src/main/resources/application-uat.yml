@@ -1,0 +1,43 @@
+server:
+  port: 1207
+
+ 
+    
+logging:
+  level:
+    org.springframework: ERROR
+    com.travtronics: DEBUG
+    
+spring:
+  devtools:
+    restart:
+      enabled: true  
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+            implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://192.178.10.104:3306/e_services?useSSL=false&&connectionTimeZone=UTC
+    username: root
+    password: Care@3210
+    driver-class-name: com.mysql.cj.jdbc.Driver
+keycloak:
+  auth-server-url: http://192.178.10.104:8080/auth
+  realm: Eservices
+  resource: eservice-app
+  public-client: true
+  security-constraints:
+  - auth-roles:
+    - AdminRole
+    security-collections:
+    - patterns:
+      - /login-management
+  ssl-required: none
+  use-resource-role-mappings: true
+ 
